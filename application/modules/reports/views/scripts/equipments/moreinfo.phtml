@@ -1,0 +1,109 @@
+<?php $this->headScript()->appendFile('/js/main/validateEquipments.js') ?> 
+<?php $this->headScript()->appendFile('/js/modules/functionGral.js') ?> 
+<?php $disabled = 'true';?> 
+<div class="row panel-data">
+    <input id="hRefLinkMain" type="hidden" value="/reports/equipments/index" />
+	<div class="span12">
+		<!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">
+					<a href="javascript:backToModule()">
+						<i class="icon-circle-arrow-left fa-1"></i></a> Información del Tracker</div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                	<?php if(@$this->errors['eIMEI']):?>
+						<div id="divpErrorLogin" class="alert alert-error" style="display:block;">
+						  <button type="button" class="close" data-dismiss="alert">√ó</button>
+						  <h4>Error</h4>
+						  <div>El IMEI ya se encuentra registrado.</div>
+						</div>	                	
+                	<?php endif;?>
+					
+					<form method="POST" action="/reports/equipments/moreinfo" id="FormData" class="form-horizontal ">
+		                <input type="hidden" name="optReg" value="<?php echo ($this->idToUpdate>0) ? 'update': 'new';?>" />
+		                <input type="hidden" id="catId" name="catId" value="<?php echo $this->catId; ?>" />
+		                
+		                <?php if($this->resultOp=='okRegister'): ?>
+		                    <div class="alert alert-success">
+		                        <button class="close" data-dismiss="alert"></button>
+		                        Datos se almacenaron correctamente.
+		                    </div>  
+		                <?php endif;?>    		              
+			                <fieldset>
+								<div class="control-group <?php  echo (@$this->dataUser['adm_tipo']==1) ? '':'hide';?> ">
+									<label class="control-label">Pais<span class="required">*</span></label>
+									<div class="controls">
+										<select class="m-wrap" name="inputCodePais" id="inputCodePais" <?php echo $disabled;?> onChange="getoptionsCbo('Distribuidor','distribuidore',this.value,'','');"> >
+			                                <?php echo $this->aPaises;?>
+										</select>
+									</div>
+								</div>
+								<div class="control-group <?php  echo (@$this->dataUser['adm_tipo']==3) ? 'hide':'';?> ">
+									<label class="control-label">Distribuidor<span class="required">*</span></label>
+									<div class="controls">
+										<div id="divDistribuidor">
+											<select class="m-wrap" name="inputDistribuidor" id="inputDistribuidor" <?php echo $disabled;?> >
+				                                <?php echo $this->aDistrib;?>
+											</select>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="control-group">
+									<label class="control-label">Mascota Asignada<span class="required">*</span></label>
+									<div class="controls">
+										<input type="text" class="span6 m-wrap" value="<?php echo @$this->data['MASCOTA']; ?>" disabled >
+									</div>
+								</div>					                	
+								<div class="control-group">
+									<label class="control-label">IMEI<span class="required">*</span></label>
+									<div class="controls">
+										<input name="inputImei" type="text" class="span6 m-wrap" value="<?php echo @$this->data['gpsTrackerIMEI']; ?>" <?php echo $disabled;?> >
+									</div>
+								</div>		
+
+								<div class="control-group">
+									<label class="control-label">No. de Serie<span class="required">*</span></label>
+									<div class="controls">
+										<input type="text" name="inputNoSerie" data-required="1" class="span6 m-wrap" value="<?php echo @$this->data['gpsTrackerSerialNumber']; ?>"  <?php echo $disabled;?> >
+									</div>
+								</div>									
+
+								<div class="control-group">
+									<label class="control-label">Teléfono<span class="required">*</span></label>
+									<div class="controls">
+										<input name="inputTel" type="text" class="span6 m-wrap" value="<?php echo @$this->data['telephone']; ?>" <?php echo $disabled;?> >
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label">IP<span class="required">*</span></label>
+									<div class="controls">
+										<input name="inputIp" type="text" class="span6 m-wrap" value="<?php echo (isset($this->data['IPaddress']) && $this->data['IPaddress']!="") ? $this->data['IPaddress'] : '0.0.0.0'; ?>" <?php echo $disabled;?> >
+									</div>
+								</div>										
+
+								<div class="control-group">
+									<label class="control-label">Estatus<span class="required">*</span></label>
+									<div class="controls">
+										<select class="m-wrap" name="inputEstatus" id="inputEstatus" <?php echo $disabled;?> >
+											<option value="">Seleccionar una opción</option>
+			                                <?php echo $this->aStatus;?>
+										</select>
+									</div>
+								</div>	
+								
+								<div class="form-actions">
+									<button type="submit" class="btn btn-primary">Guardar</button>
+									<button type="button" class="btn" onClick="javascript:backToModule()">Cancelar</button>
+								</div>										
+						</fieldset>							
+					</form>										    
+				</div>			
+			</div>
+		</div>
+	</div>	
+</div> 

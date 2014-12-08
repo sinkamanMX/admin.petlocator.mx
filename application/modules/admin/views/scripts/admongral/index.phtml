@@ -1,0 +1,129 @@
+<?php $this->headLink()->appendStylesheet('/libs/charts/styles/Attributes/jchartfx.attributes.css') ?>
+<?php $this->headLink()->appendStylesheet('/libs/charts/styles/Attributes/jchartfx.palette.css') ?>
+<?php $this->headScript()->appendFile('/js/modules/gralTables.js') ?>   
+<?php $this->headScript()->appendFile('/libs/charts/js/jchartfx.system.js') ?>   
+<?php $this->headScript()->appendFile('/libs/charts/js/jchartfx.coreVector.js') ?>   
+<?php $this->headScript()->appendFile('/libs/charts/js/jchartfx.data.js') ?>   
+<?php $this->headScript()->appendFile('/libs/charts/js/jchartfx.animation.js') ?>   
+<?php $this->headScript()->appendFile('/libs/charts/js/jchartfx.coreVector3d.js') ?>   
+<?php $this->headScript()->appendFile('/js/modules/admongral/reportsGral.js') ?>     
+<?php $arResume = Array();?>
+<div class="row panel-data">
+    <div class="span12">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Paises Activos</div>
+            </div> 
+            <div class="block-content collapse in">  
+                    <div class="">
+                        <div class="span6">
+                            <div id='divGrafica' style='width:100%;height:300px;'></div>
+                        </div>
+                        <div class="span6">
+                            <div id='divGrafica2' style='width:100%;height:300px;'></div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="span6">
+                            <div id='divGrafica3' style='width:100%;height:300px;'></div>
+                        </div>
+                        <div class="span6">
+                            <div id='divGrafica4' style='width:100%;height:300px;'></div>
+                        </div>
+                    </div>                                                            
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row panel-data">
+    <div class="span12">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Paises</div>             
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                <div class="table-toolbar">
+                  <div class="btn-group">
+                     <a href="/admin/admongral/moreinfo?catId=-1"><button class="btn btn-success"> Agregar <i class="icon-plus icon-white"></i></button></a>
+                  </div>
+                </div>                         
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="dataTable">
+                        <thead>             
+                            <tr>
+                                <th>Pais</th>                                
+                                <th>Divisa</th>                                
+                                <th>Distribuidores</th>
+                                <th>Clientes</th>
+                                <th>Trackers</th>
+                                <th>Estatus</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $result = '';?>
+                            <?php foreach($this->aPaises as $key => $items): ?>
+                                <tr> 
+                                    <td> <img style="width:25px" src="/images/banderas/<?php echo $items['bandera'];?>"/> <?php echo $items['name'];?></td>
+                                    <td><?php echo $items['divisa'];?></td>
+                                    <td><?php echo $items['NoDist'];?></td>
+                                    <td><?php echo $items['NoClients'];?></td>
+                                    <td><?php echo $items['NoTrackers'];?></td>
+                                    <td><?php echo ($items['status']==1) ? 'Activo':'Inactivo' ;?></td> 
+                                    <td class="text-center">
+
+                                        <a href="/admin/admongral/moreinfo?catId=<?php echo $items['code']; ?>">
+                                            <button class="btn btn-primary"> <i class="icon-edit icon-white "></i>
+                                            </button>
+                                        </a>
+                                        <a href="/admin/countrys/index?catId=<?php echo $items['code']; ?>">
+                                            <button class="btn btn-success"> <i class="icon-circle-arrow-right icon-white "></i>
+                                            </button>
+                                        </a>                                        
+                                    </td>
+                                </tr>                                                              
+                            <?php  endforeach;?>
+                        </tbody>
+                </div>
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+</div>   
+<script type="text/javascript">
+    var aDistribuidores = [
+        <?php foreach($this->aPaises as $key => $items): ?>
+            {  "Status": '<?php echo $items['name'];?>', 
+                "Region" : "Distribuidores", 
+                "Usage"  : <?php echo isset($items['NoDist']) ? $items['NoDist']: 0 ;?>
+            },       
+        <?php endforeach;?>                    
+    ];      
+
+    var aClientes = [
+        <?php foreach($this->aPaises as $key => $items): ?>
+            {  "Status": '<?php echo $items['name'];?>', 
+                "Region" : "Clientes", 
+                "Usage"  : <?php echo isset($items['NoClients']) ? $items['NoClients']: 0 ;?>
+            },       
+        <?php endforeach;?>                    
+    ];                     
+
+    var aTrackers = [
+        <?php foreach($this->aPaises as $key => $items): ?>
+            {  "Status": '<?php echo $items['name'];?>', 
+                "Region" : "Trackers", 
+                "Usage"  : <?php echo isset($items['NoTrackers']) ? $items['NoTrackers']: 0 ;?>
+            },       
+        <?php endforeach;?>                    
+    ];                     
+
+    var aSales = [
+        <?php foreach($this->aPaises as $key => $items): ?>
+            {  "Status": '<?php echo $items['name'];?>', 
+                "Region" : "Pedido", 
+                "Usage"  : <?php echo isset($items['NoPedido']) ? $items['NoPedido']: 0 ;?>
+            },       
+        <?php endforeach;?>                    
+    ];                                                                 
+</script> 
