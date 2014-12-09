@@ -1,8 +1,9 @@
 <?php $this->headScript()->appendFile('/js/main/validateEquipments.js') ?> 
 <?php $this->headScript()->appendFile('/js/modules/functionGral.js') ?> 
 <?php $disabled = 'true';?> 
+
 <div class="row panel-data">
-    <input id="hRefLinkMain" type="hidden" value="/reports/equipments/index" />
+    <input id="hRefLinkMain" type="hidden" value="/distribuitor/main/index?catId=<?php echo $this->data['id_distribuidor']; ?>&codeCountry=<?php echo $this->dataCountry['code'];?>"/>
 	<div class="span12">
 		<!-- block -->
         <div class="block">
@@ -21,7 +22,7 @@
 						</div>	                	
                 	<?php endif;?>
 					
-					<form method="POST" action="/reports/equipments/moreinfo" id="FormData" class="form-horizontal ">
+					<form method="POST" action="/distribuitor/equipments/moreinfo" id="FormData" class="form-horizontal ">
 		                <input type="hidden" name="optReg" value="<?php echo ($this->idToUpdate>0) ? 'update': 'new';?>" />
 		                <input type="hidden" id="catId" name="catId" value="<?php echo $this->catId; ?>" />
 		                

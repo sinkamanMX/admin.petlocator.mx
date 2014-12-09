@@ -1,8 +1,8 @@
 <?php
 
-class reports_EquipmentsController extends My_Controller_Action
+class distribuitor_EquipmentsController extends My_Controller_Action
 {	
-	protected $_clase = 'mReportEqp';
+	protected $_clase = 'mDealers';
 	
     public function init()
     {
@@ -39,9 +39,11 @@ class reports_EquipmentsController extends My_Controller_Action
     {
 		try{
 			$cTrackers  = new My_Model_Trackers();
+			$cPaises  	= new My_Model_Paises(); 
 			$codCountry = (isset($this->_dataIn['strCountry']) && $this->_dataIn['strCountry']!="") ? $this->_dataIn['strCountry']: $this->_dataUser['cod_pais'];
 			$aDataTable = $cTrackers->getDataTableAdmon($codCountry,$this->_dataUser['adm_tipo'],$this->_dataUser['id_distribuidor']);
 			
+			$this->view->dataCountry = $cPaises->getData($codeCountry); 			
 			$this->view->aResume = $aDataTable;
         } catch (Zend_Exception $e) {
             echo "Caught exception: " . get_class($e) . "\n";
@@ -60,25 +62,28 @@ class reports_EquipmentsController extends My_Controller_Action
     		$aPaises    	= $cPaises->getCbo();
 			$aDistribuidres = Array();    		
     		$sEstatus		= '';
-    		$sDistribuidor 	= $this->_dataUser['id_distribuidor'];
+    		$sDistribuidor 	= (isset($this->_dataIn['codeDist']) && $this->_dataIn['codeDist']!="") ? $this->_dataIn['codeDist']: $this->_dataUser['id_distribuidor'];
     		
 		    if($this->_idUpdate >-1){
     	    	$dataInfo		= $classObject->getData($this->_idUpdate);
     	    	$sEstatus		= $dataInfo['gpsTrackerStatus'];
     	    	$sPais			= $dataInfo['cod_pais'];
     	    	$sDistribuidor 	= $dataInfo['id_distribuidor'];
-			}
+			}		
 			
 		    if($this->_dataOp=='update'){	  		
 				if($this->_idUpdate>-1){
 					 $validateIMEI = $classObject->validateData($this->_dataIn['inputImei'],$this->_idUpdate,'imei');
 					 if($validateIMEI){
 						 $updated = $classObject->updateRow($this->_dataIn);
-						 if($updated['status']){		
+						 if($updated['status']){						 	
+						 	$this->_redirect("/distribuitor/main/index?catId=".$sDistribuidor."&codeCountry=".$sPais);
+						 	/*		
 					 		$dataInfo   	= $classObject->getData($this->_idUpdate);
 					 		$sEstatus		= $dataInfo['gpsTrackerStatus'];
 					 		$sPais			= $dataInfo['cod_pais'];	
-    	    				$sDistribuidor 	= $dataInfo['id_distribuidor'];					 		
+    	    				$sDistribuidor 	= $dataInfo['id_distribuidor'];	
+    	    				*/				 		
 						 	$this->_resultOp= 'okRegister';
 						 }		
 					 }else{
@@ -92,11 +97,13 @@ class reports_EquipmentsController extends My_Controller_Action
 				 if($validateIMEI){
 					 	$insert = $classObject->insertRow($this->_dataIn);
 				 		if($insert['status']){	
-				 			$this->_idUpdate = $insert['id'];		
+				 			$this->_redirect("/distribuitor/main/index?catId=".$sDistribuidor."&codeCountry=".$sPais);
+				 			/*$this->_idUpdate = $insert['id'];		
+				 			
 							$dataInfo        = $classObject->getData($this->_idUpdate);
 							$sEstatus	     = $dataInfo['gpsTrackerStatus'];
 							$sPais			 = $dataInfo['cod_pais'];
-							$sDistribuidor 	 = $dataInfo['id_distribuidor'];
+							$sDistribuidor 	 = $dataInfo['id_distribuidor'];*/
 							$this->_resultOp = 'okRegister';							 		
 						}else{
 							$this->_aErrors['status'] = 'no-insert';
@@ -119,12 +126,13 @@ class reports_EquipmentsController extends My_Controller_Action
     		$this->view->aStatus  	= $cFunctions->cboStatus($sEstatus);
     		$this->view->aPaises 	= $cFunctions->selectDb($aPaises,$sPais);
     		
+
 			$this->view->data 		= $dataInfo;
 			$this->view->errors 	= $this->_aErrors;	
 			$this->view->resultOp   = $this->_resultOp;
 			$this->view->catId		= $this->_idUpdate;
 			$this->view->idToUpdate = $this->_idUpdate;
-				    		
+			$this->view->dataCountry = $cPaises->getData($sPais); 				    		
 		} catch (Zend_Exception $e) {
             echo "Caught exception: " . get_class($e) . "\n";
         	echo "Message: " . $e->getMessage() . "\n";                

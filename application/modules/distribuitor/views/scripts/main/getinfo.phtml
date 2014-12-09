@@ -1,0 +1,285 @@
+<?php $this->headScript()->appendFile('/js/modules/functionGral.js') ?>  
+<?php $this->headScript()->appendFile('/js/modules/dealers/validateDealers.js') ?>
+
+<input id="hRefLinkMain" type="hidden" value="/admin/countrys/index?strInput=<?php echo $this->dataCountry['code'];?>" />
+<div class="row-fluid">
+    <div class="navbar  m-top-3 no-margin-b">
+        <div class="navbar-inner">
+            <ul class="breadcrumb">
+                <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
+                <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
+
+                <?php if(@$this->dataUser['adm_tipo']==1) :?>
+                    <li>
+                        <a href="/admin/admongral/index">Pais</a> <span class="divider">/</span>  
+                    </li>
+                    <li>
+                        <a href="/admin/countrys/index?catId=<?php echo $this->dataCountry['code'];?>"><?php echo $this->dataCountry['name'];?></a> <span class="divider">/</span>
+                    </li>
+                <?php endif;?>
+                <li>
+                    <a href="/distribuitor/main/index?codeCountry=<?php echo $this->dataCountry['code'];?>">Distribuidor</a>
+                </li>
+            </ul>           
+        </div>
+    </div>
+</div>
+
+
+<?php $disabled = 'true';?> 
+<div class="row panel-data">
+
+
+    <input id="hRefLinkMain" type="hidden" value="/reports/equipments/index" />
+
+
+    <div class="span12">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left"> Información del Distribuidor</div>
+            </div>
+
+
+            <div class="block-content collapse in">
+                <div class="span12">
+                    <?php if(@$this->errors['eIMEI']):?>
+                        <div id="divpErrorLogin" class="alert alert-error" style="display:block;">
+                          <button type="button" class="close" data-dismiss="alert">√ó</button>
+                          <h4>Error</h4>
+                          <div>El IMEI ya se encuentra registrado.</div>
+                        </div>                      
+                    <?php endif;?>
+                    
+                    <form method="POST" action="/distribuitor/main/getinfo" id="FormData" class="form-horizontal ">
+                        <input type="hidden" name="optReg" value="<?php echo ($this->idToUpdate>0) ? 'update': 'new';?>" />
+                        <input type="hidden" id="catId" name="catId" value="<?php echo $this->catId; ?>" />
+                        
+
+                        <?php if($this->resultOp=='okRegister'): ?>
+                            <div class="alert alert-success">
+                                <button class="close" data-dismiss="alert"></button>
+                                Datos se almacenaron correctamente.
+                            </div>  
+                        <?php endif;?>                        
+
+
+                            <fieldset>
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                        <div class="control-group">
+                                            <label class="control-label">Nombre<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input name="inputName" type="text" class="span12 m-wrap" value="<?php echo @$this->data['nombre']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>      
+                                    </div>
+                                    <div class="span6">
+                                        <div class="control-group">
+                                            <label class="control-label">Estatus<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <select class="m-wrap" name="inputEstatus" id="inputEstatus" <?php echo $disabled;?> >
+                                                    <option value="">Seleccionar una opción</option>
+                                                    <?php echo $this->aStatus;?>
+                                                </select>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                <h4>Dirección:</h4>
+                            
+                                <div class="span12 formcustom">
+                                    <div class="span12">
+                                        <div class="control-group">
+                                            <label class="control-label">Calle <span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input type="text" name="inputCalle" data-required="1" class="span12 m-wrap" value="<?php echo @$this->data['calle']; ?>"  <?php echo $disabled;?> >
+                                            </div>
+                                        </div>  
+                                     </div>
+                                </div>
+
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                         <div class="control-group">
+                                            <label class="control-label">No. Int</label>
+                                            <div class="controls">
+                                                <input name="InputNoint" type="text" class="span6 m-wrap" value="<?php echo @$this->data['no_int']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                       
+                                     </div>
+                                    <div class="span6">  
+                                        <div class="control-group">
+                                            <label class="control-label">No. Ext<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input name="InputNoExt" type="text" class="span6 m-wrap" value="<?php echo @$this->data['no_ext']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                                                           
+                                    </div>
+                                </div>
+
+                                
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                         <div class="control-group">
+                                            <label class="control-label">Colonia<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input name="inputColonia" type="text" class="span12 m-wrap" value="<?php echo @$this->data['colonia']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                    
+                                     </div>
+                                    <div class="span6">  
+                                        <div class="control-group">
+                                            <label class="control-label">Municipio<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input name="inputMuni" type="text" class="span12 m-wrap" value="<?php echo @$this->data['municipio']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                                                           
+                                    </div>
+                                </div>
+
+
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                        <div class="control-group">
+                                            <label class="control-label">Pais<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <select <?php  echo (@$this->dataUser['adm_tipo']==1) ? '':'disabled';?>  class="m-wrap" name="inputCodePais" id="inputCodePais" onChange="getoptionsCbo('Estado','estadosa',this.value,'','');" <?php echo $disabled;?> >
+                                                    <?php echo $this->aPaises;?>
+                                                </select>
+                                            </div>
+                                        </div>                                  
+                                     </div>
+
+                                    <div class="span6">  
+                                        <div class="control-group">
+                                            <label class="control-label">Estado<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <div id="divEstado">
+                                                    <select class="m-wrap" name="inputEstado" id="inputEstado" <?php echo $disabled;?> >
+                                                        <?php echo $this->aEstados;?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>                                                                         
+                                    </div>
+                                </div>   
+
+
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                        <div class="control-group">
+                                            <label class="control-label">CP<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input name="inputCp" type="text" class="span6 m-wrap" value="<?php echo @$this->data['cp']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                 
+                                     </div>
+                                    <div class="span6">  
+                                        <div class="control-group">
+                                            <label class="control-label">Pagina web</label>
+                                            <div class="controls">
+                                                <input name="inputWeb" type="text" class="span12 m-wrap" value="<?php echo @$this->data['web_url']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                                                       
+                                    </div>
+                                </div>   
+
+                                <h4>Datos del Distribuidor:</h4>
+        
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                        <div class="control-group">
+                                            <label class="control-label">Nombre Contacto</label>
+                                            <div class="controls">
+                                                <input name="inputNamContacto" type="text" class="span12 m-wrap" value="<?php echo @$this->data['contacto']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div> 
+                                
+                                     </div>
+                                    <div class="span6">  
+                                        <div class="control-group">
+                                            <label class="control-label">Email Contacto</label>
+                                            <div class="controls">
+                                                <input name="inputEmContacto" type="text" class="span12 m-wrap" value="<?php echo @$this->data['contacto_email']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                                                       
+                                    </div>
+                                </div>   
+
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                        <div class="control-group">
+                                            <label class="control-label">Teléfono</label>
+                                            <div class="controls">
+                                                <input name="inputTelContacto" type="text" class="span12 m-wrap" value="<?php echo @$this->data['contacto_tel']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div> 
+                                
+                                     </div>
+                                    <div class="span6">  
+                                        <div class="control-group">
+                                            <label class="control-label">Teléfono 2</label>
+                                            <div class="controls">
+                                                <input name="inputTelContacto2" type="text" class="span12 m-wrap" value="<?php echo @$this->data['contacto_tel2']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                                                          
+                                    </div>
+                                </div>                                   
+
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                         <div class="control-group">
+                                            <label class="control-label">Horario</label>
+                                            <div class="controls">
+                                                <input name="inputHorario" type="text" class="span6 m-wrap" value="<?php echo @$this->data['horario']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div> 
+                                
+                                     </div>
+                                    <div class="span6">  
+                                         <div class="control-group">
+                                            <label class="control-label">Dias Abierto</label>
+                                            <div class="controls">
+                                                <input name="inputDias" type="text" class="span6 m-wrap" value="<?php echo @$this->data['dias']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                                                        
+                                    </div>
+                                </div>   
+
+                                <div class="span12 formcustom">
+                                    <div class="span6">
+                                         <div class="control-group">
+                                            <label class="control-label">Latitud<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input name="inputLatitud" type="text" class="span12 m-wrap" value="<?php echo @$this->data['latitud']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>   
+                                
+                                     </div>
+                                    <div class="span6">  
+                                         <div class="control-group">
+                                            <label class="control-label">Longitud<span class="required">*</span></label>
+                                            <div class="controls">
+                                                <input name="inputLongitud" type="text" class="span12 m-wrap" value="<?php echo @$this->data['longitud']; ?>" <?php echo $disabled;?> >
+                                            </div>
+                                        </div>                                                                           
+                                    </div>
+                                </div>   
+                                
+                                 <div class="control-group">
+                                    <div class="controls">
+                                    </div>
+                                </div>  
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <a href="<?php echo ($this->idToUpdate>0) ? '/distribuitor/main/index?catId='.$this->idToUpdate.'&codeCountry='.$this->dataCountry['code'] : '/admin/countrys/index?catId='.$this->dataCountry['code']; ?>" class="btn">Cancelar</a>
+                                </div>                                      
+                        </fieldset>                         
+                    </form>                                         
+                </div>          
+            </div>
+        </div>
+    </div>  
+</div> 

@@ -151,9 +151,9 @@ class My_Controller_Functions
 		switch($nameClass) {
 		   case "distribuidore":
 		       return new My_Model_Distribuidores();
-		   /*case "colonia":
-		       return new My_Model_Colonias();	
-		   case "horarios":
+		   case "estadosa":
+		       return new My_Model_Estados();	
+		   /*case "horarios":
 		       return new My_Model_Cinstalaciones();
 		   case "modeloe":
 		       return new My_Model_Modelos();	 

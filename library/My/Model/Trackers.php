@@ -36,7 +36,7 @@ class My_Model_Trackers extends My_Db_Table
 				 LEFT JOIN LastPosition L ON L.petID = M.masc_id
 				 $filter
 				GROUP BY T.gpsTrackerID
-				ORDER BY T.cod_pais, T.gpsTrackerIMEI";    	
+				ORDER BY T.cod_pais, T.gpsTrackerIMEI";   	
 		$query   = $this->query($sql);
 		if(count($query)>0){		  
 			$result = $query;			

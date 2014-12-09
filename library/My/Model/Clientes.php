@@ -35,5 +35,28 @@ class My_Model_Clientes extends My_Db_Table
 		return $result;			
 	}
 	
-	
+	public function getTableDist($idDistribuidor){
+		try{
+			$result= Array();
+			$this->query("SET NAMES utf8",false); 		
+	    	$sql ="SELECT C.clt_id AS ID, 	CONCAT(C.clt_nombre,' ',C.clt_apellidos) AS NOMBRE,			      
+					      CONCAT(C.clt_pais,',',C.clt_estado ) AS PAIS,
+					      C.clt_email,C.clt_accesos,C.clt_sap_cardcode,
+					      COUNT(M.masc_id) AS TOTAL_PET, C.clt_fecha_acceso
+					FROM usuario_cliente C
+					LEFT JOIN mascota M ON C.clt_id = M.clt_id
+					WHERE C.id_distribuidor = $idDistribuidor
+					GROUP BY C.clt_id
+					ORDER BY NOMBRE ASC";
+			$query   = $this->query($sql);
+			if(count($query)>0){		  
+				$result = $query;			
+			}
+		}catch(Exception $e) {
+            echo $e->getMessage();
+            echo $e->getErrorMessage();
+        }
+        
+		return $result;			
+	}	
 }

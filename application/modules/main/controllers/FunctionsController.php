@@ -5,7 +5,8 @@ class main_FunctionsController extends My_Controller_Action
 	protected $_clase = 'principal';
 	public    $dataIn = Array();
 	protected $idEmpresa = -1;
-	public    $aDbTables = Array (  'distribuidore'        => Array('nameClass'=>'Distibuidores')
+	public    $aDbTables = Array (  'distribuidore'  => Array('nameClass'=>'Distibuidores'),
+									'estadosa'       => Array('nameClass'=>'Estados')
 								);
 	
     public function init()
