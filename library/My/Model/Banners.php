@@ -77,7 +77,7 @@ class My_Model_Banners extends My_Db_Table
        	$result     = Array();
         $result['status']  = false;
 
-        $nameImage  = ($data['nameImagen']!="") ? ",IMAGEN			='".$data['nameImagen']."'": "";
+        $nameImage  = ($data['nameImagen']!="") ? ",imagen			='".$data['nameImagen']."'": "";
 
         $sql="UPDATE $this->_name	
         		SET nombre			= '".$data['inputName']."',

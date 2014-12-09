@@ -79,7 +79,7 @@
                 <div class="block-content collapse in">
                     <div class="table-toolbar">
                       <div class="btn-group">
-                         <a href="/main/users/getinfo?catId=-1"><button class="btn btn-success"> Agregar <i class="icon-plus icon-white"></i></button></a>
+                         <a href="/admin/promos/getinfo?catId=-1&codeCountry=<?php echo $this->dataInfo['code'];?>"><button class="btn btn-success"> Agregar <i class="icon-plus icon-white"></i></button></a>
                       </div>
                     </div>                 	
                 	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered dataTable"  id="dataTable">
@@ -103,7 +103,7 @@
                                     <td><?php echo $items['fecha_inicio'];?> al <?php echo $items['fecha_fin'];?></td>
                                     <td><?php echo $items['ESTATUS'];?></td>		                                    
                                     <td class="text-center">
-                                        <a href="/atn/services/exportsearch?strInput=<?php echo $items['ID']; ?>">
+                                        <a href="/admin/promos/getinfo?catId=<?php echo $items['ID']; ?>&codeCountry=<?php echo $this->dataInfo['code'];?>">
                                             <button class="btn btn-info"> <i class="icon-info-sign icon-white"></i>
                                             </button>
                                         </a>
