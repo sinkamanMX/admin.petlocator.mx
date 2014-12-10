@@ -13,7 +13,7 @@
 	                <li class="active"><?php echo $this->data['nombre'];?></li>
 	            </ul>
 		    	<div class="pull-right">
-		    		<a href="/distribuitor/main/getinfo?catId=<?php echo $this->data['id_distribuidor']; ?>&codeCountry=<?php echo $this->data['cod_pais'];?>" class="btn"><i class="icon-edit"></i></a>
+		    		<a href="/distribuitor/main/getinfo?catId=<?php echo $this->data['id_distribuidor']; ?>&codeCountry=<?php echo $this->dataCountry['cod_pais'];?>" class="btn"><i class="icon-edit"></i></a>
 		    	</div>	            
 	    	</div>
 		</div>
@@ -59,7 +59,7 @@
                                     <td><?php echo $items['clt_fecha_acceso'];?></td>
                                     <td><?php echo $items['clt_accesos'];?></td>                                    
                                     <td class="text-center">
-                                        <a href="/admin/banners/getinfo?catId=<?php echo $items['ID']; ?>&codeCountry=<?php echo $this->dataInfo['code'];?>">
+                                        <a href="/distribuitor/clients/moreinfo?catId=<?php echo $items['ID']; ?>&codeCountry=<?php echo $this->dataCountry['code'];?>&codeDist=<?php echo $this->data['id_distribuidor']; ?>">
                                             <button class="btn btn-info"> <i class="icon-info-sign icon-white"></i>
                                             </button>
                                         </a>
@@ -83,7 +83,7 @@
                 <div class="span12">
 	                <div class="table-toolbar">
 	                  <div class="btn-group">
-	                     <a href="/distribuitor/equipments/moreinfo?catId=-1&codeCountry=<?php echo $this->data['cod_pais'];?>&codeDist=<?php echo $this->data['id_distribuidor']; ?>"><button class="btn btn-success"> Agregar <i class="icon-plus icon-white"></i></button></a>
+	                     <a href="/distribuitor/equipments/moreinfo?catId=-1&codeCountry=<?php echo $this->dataCountry['code'];?>&codeDist=<?php echo $this->data['id_distribuidor']; ?>"><button class="btn btn-success"> Agregar <i class="icon-plus icon-white"></i></button></a>
 	                  </div>
 	                </div>  
                 </div>                       
@@ -108,7 +108,7 @@
                                     <td><?php echo $items['ESTATUS_MASCOTA'];?></td>
                                     <td><?php echo $items['U_REPORTE'];?></td>
                                     <td class="text-center">                           	
-                                            <a href="/distribuitor/equipments/moreinfo?catId=<?php echo $items['gpsTrackerID']; ?>&codeCountry=<?php echo $this->data['cod_pais'];?>&codeDist=<?php echo $this->data['id_distribuidor']; ?>">
+                                            <a href="/distribuitor/equipments/moreinfo?catId=<?php echo $items['gpsTrackerID']; ?>&codeCountry=<?php echo $this->dataCountry['code'];?>&codeDist=<?php echo $this->data['id_distribuidor']; ?>">
                                              <button class="btn btn-info"> <i class="icon-info-sign icon-white"></i>
                                             </button>
                                         </a>

@@ -439,6 +439,36 @@ body {
 .text-center {
     text-align: center !important;
 }
+.text-left {
+    text-align: left !important;
+}
 .table-toolbar {
     margin-bottom: -30px !important;
+}
+
+.tittlePetdact {
+  text-shadow: 2px 2px #000000;  
+  background-color: gray;
+  color: #ffffff;
+  height: 100px;
+  margin-left: 0 !important;
+  margin-top: -50% !important;
+  opacity: 0.8;
+  position: relative;
+  text-align: center;
+}
+
+.tittlePet {
+    text-shadow: 2px 2px #000000;  
+    background-color: #51a351;
+    color: #ffffff;
+    height: 100px;
+    margin-left: 0 !important;
+    margin-top: -50% !important;
+    opacity: 0.8;
+    position: relative;
+    text-align: center;
+}
+.txtLocation{
+  font-size: 10px;
 }

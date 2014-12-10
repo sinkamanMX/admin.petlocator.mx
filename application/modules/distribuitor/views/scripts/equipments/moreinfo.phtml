@@ -1,6 +1,28 @@
 <?php $this->headScript()->appendFile('/js/main/validateEquipments.js') ?> 
 <?php $this->headScript()->appendFile('/js/modules/functionGral.js') ?> 
 <?php $disabled = 'true';?> 
+<div class="row-fluid">
+    <div class="navbar  m-top-3 no-margin-b">
+        <div class="navbar-inner">
+            <ul class="breadcrumb">
+                <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
+                <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
+
+                <?php if(@$this->dataUser['adm_tipo']==1) :?>
+                    <li>
+                        <a href="/admin/admongral/index">Pais</a> <span class="divider">/</span>  
+                    </li>
+                    <li>
+                        <a href="/distribuitor/main/index?catId=<?php echo $this->data['id_distribuidor']; ?>&codeCountry=<?php echo $this->dataCountry['code'];?>"><?php echo $this->dataDist['name'];?></a> <span class="divider">/</span>
+                    </li>
+                <?php endif;?>
+                <li>
+                    Tracker
+                </li>
+            </ul>           
+        </div>
+    </div>
+</div>
 
 <div class="row panel-data">
     <input id="hRefLinkMain" type="hidden" value="/distribuitor/main/index?catId=<?php echo $this->data['id_distribuidor']; ?>&codeCountry=<?php echo $this->dataCountry['code'];?>"/>

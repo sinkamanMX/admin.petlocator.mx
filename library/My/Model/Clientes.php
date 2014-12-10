@@ -58,5 +58,20 @@ class My_Model_Clientes extends My_Db_Table
         }
         
 		return $result;			
-	}	
+	}
+
+    public function getData($datauser){
+      	$this->query("SET NAMES utf8",false); 
+        
+		$result= Array();
+    	$sql ="SELECT * 
+                FROM usuario_cliente  
+                WHERE clt_id = $datauser";			         	
+		$query   = $this->query($sql);
+		if(count($query)>0){
+			$result	 = $query[0];			
+		}	
+        
+		return $result;	        
+    }  	
 }

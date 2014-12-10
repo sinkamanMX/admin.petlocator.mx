@@ -1,6 +1,6 @@
 <?php
 
-class distribuitor_EquipmentsController extends My_Controller_Action
+class distribuitor_ClientsController extends My_Controller_Action
 {	
 	protected $_clase = 'mDealers';
 	
@@ -37,13 +37,13 @@ class distribuitor_EquipmentsController extends My_Controller_Action
     public function indexAction()
     {
 		try{
-			$cTrackers  = new My_Model_Trackers();
+			/*$cTrackers  = new My_Model_Trackers();
 			$cPaises  	= new My_Model_Paises(); 
 			$codCountry = (isset($this->_dataIn['strCountry']) && $this->_dataIn['strCountry']!="") ? $this->_dataIn['strCountry']: $this->_dataUser['cod_pais'];
 			$aDataTable = $cTrackers->getDataTableAdmon($codCountry,$this->_dataUser['adm_tipo'],$this->_dataUser['id_distribuidor']);
 			
 			$this->view->dataCountry = $cPaises->getData($codeCountry); 			
-			$this->view->aResume = $aDataTable;
+			$this->view->aResume = $aDataTable;*/
         } catch (Zend_Exception $e) {
             echo "Caught exception: " . get_class($e) . "\n";
         	echo "Message: " . $e->getMessage() . "\n";                
@@ -54,73 +54,39 @@ class distribuitor_EquipmentsController extends My_Controller_Action
 		try{
     		$dataInfo   = Array();
     		$cFunctions	= new My_Controller_Functions();
-    		$classObject= new My_Model_Trackers();
+    		$classObject= new My_Model_Clientes();
 			$cPaises	= new My_Model_Paises();
+			$cMascotas	= new My_Model_Mascotas();
+			
 			$cDistribuidores = new My_Model_Distribuidores();
     		$sPais			= $this->_dataUser['cod_pais']; 
     		$aPaises    	= $cPaises->getCbo();
-			$aDistribuidres = Array();    		
+			$aDistribuidres = Array();    
+			$aMascotas		= Array();		
     		$sEstatus		= '';
     		$sDistribuidor 	= (isset($this->_dataIn['codeDist']) && $this->_dataIn['codeDist']!="") ? $this->_dataIn['codeDist']: $this->_dataUser['id_distribuidor'];
     		
 		    if($this->_idUpdate >-1){
     	    	$dataInfo		= $classObject->getData($this->_idUpdate);
-    	    	$sEstatus		= $dataInfo['gpsTrackerStatus'];
-    	    	$sPais			= $dataInfo['cod_pais'];
-    	    	$sDistribuidor 	= $dataInfo['id_distribuidor'];
-			}	
-
-			$dataInfo['id_distribuidor'] = $sDistribuidor;
+    	    	$aMascotas		= $cMascotas->getPets($this->_idUpdate);
+			}			
 			
-		    if($this->_dataOp=='update'){	  		
-				if($this->_idUpdate>-1){
-					 $validateIMEI = $classObject->validateData($this->_dataIn['inputImei'],$this->_idUpdate,'imei');
-					 if($validateIMEI){
-						 $updated = $classObject->updateRow($this->_dataIn);
-						 if($updated['status']){						 	
-						 	$this->_redirect("/distribuitor/main/index?catId=".$sDistribuidor."&codeCountry=".$sPais);	 		
-						 	$this->_resultOp= 'okRegister';
-						 }		
-					 }else{
-					 	$this->_aErrors['eIMEI'] = '1';
-					 }	
-				}else{
-					$this->_aErrors['status'] = 'no-info';
-				}	
-			}else if($this->_dataOp=='new'){	
-				$validateIMEI = $classObject->validateData($this->_dataIn['inputImei'],-1,'imei');
-				 if($validateIMEI){
-					 	$insert = $classObject->insertRow($this->_dataIn);
-				 		if($insert['status']){	
-				 			$this->_redirect("/distribuitor/main/index?catId=".$sDistribuidor."&codeCountry=".$sPais);
-							$this->_resultOp = 'okRegister';							 		
-						}else{
-							$this->_aErrors['status'] = 'no-insert';
-						}
-				 }else{
-				 	$this->_aErrors['status'] = '1';
-				 }		
-			}		   
-
-			if(count($this->_aErrors)>0 && $this->_dataOp!=""){				
-				$dataInfo['gpsTrackerIMEI'] = $this->_dataIn['inputImei'];
-				$dataInfo['gpsTrackerSerialNumber']= $this->_dataIn['inputNoSerie'];
-				$dataInfo['telephone'] 		= $this->_dataIn['inputTel'];
-				$dataInfo['IPaddress'] 		= $this->_dataIn['inputIp'];				
-				$sEstatus	 				= $this->_dataIn['inputEstatus'];
-			}
+		    if($this->_dataOp=='changeStatus'){
+		    	$cValidateInt = new Zend_Validate_Digits();
+		    	if($cValidateInt->isValid($this->_dataIn['petID']) && $cValidateInt->isValid($this->_dataIn['petStatus'])){
+		    		$change = $cMascotas->changeStatus($this->_dataIn['petStatus'],$this->_dataIn['petID']);
+		    		$aMascotas	= $cMascotas->getPets($this->_idUpdate);
+		    	}
+		    }			
 			
-			$aDistribuidres			= $cDistribuidores->getCbo($sPais);
-			$this->view->aDistrib   = $cFunctions->selectDb($aDistribuidres,$sDistribuidor);  
-    		$this->view->aStatus  	= $cFunctions->cboStatus($sEstatus);
-    		$this->view->aPaises 	= $cFunctions->selectDb($aPaises,$sPais);    		
+    		$this->view->aPets		= $aMascotas;    		
 			$this->view->data 		= $dataInfo;
 			$this->view->errors 	= $this->_aErrors;	
 			$this->view->resultOp   = $this->_resultOp;
 			$this->view->catId		= $this->_idUpdate;
 			$this->view->idToUpdate = $this->_idUpdate;
-			$this->view->dataCountry= $cPaises->getData($sPais); 		
-			$this->view->dataDist	= $cDistribuidores->getData($sDistribuidor);		    		
+			$this->view->dataCountry = $cPaises->getData($sPais); 
+			$this->view->dataDist	= $cDistribuidores->getData($sDistribuidor);						    		
 		} catch (Zend_Exception $e) {
             echo "Caught exception: " . get_class($e) . "\n";
         	echo "Message: " . $e->getMessage() . "\n";                
