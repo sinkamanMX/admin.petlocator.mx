@@ -4,15 +4,21 @@ $().ready(function() {
             inputDivisa    : "required",
             inputTextDivisa: "required",
 			inputEstatus   : "required",
-			inputPais      : "required"
+			inputPais      : "required",
+            inputDiferencia: {
+              required: true,
+              number  : true
+            }
         },
-        
-        // Se especifica el texto del mensaje a mostrar
         messages: {
         	inputDivisa    : "Campo Requerido",
             inputTextDivisa: "Campo Requerido",
 			inputEstatus   : "Campo Requerido",
-			inputPais      : "Campo Requerido"
+			inputPais      : "Campo Requerido",
+            inputDiferencia: {
+              required: "Campo Requerido",
+              number:   "Este campo solo permite digitos."
+            }
         },        
         submitHandler: function(form) {
             form.submit();

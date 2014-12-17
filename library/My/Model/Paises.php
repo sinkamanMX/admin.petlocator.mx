@@ -195,7 +195,8 @@ class My_Model_Paises extends My_Db_Table
 					longitude	= ".(($data['inputLongitud']!="") ? $data['inputLongitud']: 0.000000).",
 					status		= ".$data['inputEstatus'].",
 					divisa		='".$data['inputDivisa']."',
-					texto_divisa='".$data['inputTextDivisa']."'
+					texto_divisa='".$data['inputTextDivisa']."',
+					diferencia_horario= ".$data['inputDiferencia']."
 				WHERE $this->_primary = '".$data['catId']."' LIMIT 1";
 
         try{            
