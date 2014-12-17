@@ -415,6 +415,9 @@ body {
 .row-margin-left10p {
     margin-left: 10% !important;
 }
+.margin-left5 {
+    margin-left: 5px !important;
+}
 .chzn-container{
     display: inline-block;
     font-size: 13px;

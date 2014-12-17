@@ -1,0 +1,120 @@
+<?php $this->headScript()->appendFile('/js/modules/sales/validateFirst.js') ?>    
+<?php $arResume = Array();?>
+<div class="row-fluid">
+    <div class="navbar  m-top-3 no-margin-b">
+        <div class="navbar-inner">
+            <ul class="breadcrumb">
+                <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
+                <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
+                <li>
+                    Modulo de Ventas
+                </li>
+            </ul>           
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Nueva Venta</div>
+            </div>
+            <div class="block-content collapse in">
+                <form method="POST" action="/distribuitor/sales/index" id="FormData" class="form-horizontal ">
+                    <input type="hidden" name="optReg" value="step1" />
+                    
+                    <?php if($this->resultOp=='okRegister'): ?>
+                        <div class="alert alert-success">
+                            <button class="close" data-dismiss="alert"></button>
+                            Datos se almacenaron correctamente.
+                        </div>  
+                    <?php endif;?>     
+
+                    <?php if(@$this->aErrors['userExist']==1): ?>
+                        <div id="divpErrorLogin" class="alert alert-error" style="display:block;">
+                          <button type="button" class="close" data-dismiss="alert">x</button>
+                          <h4>Error</h4>
+                          <div>El usuario ya se encuentra registrado, favor de ingresar otro usuario.</div>
+                        </div>     
+                    <?php endif;?>                                         
+                        <fieldset>
+                            <h4>Informacion del Cliente</h4>
+                            <div class="span12 formcustom">
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label">Nombre<span class="required">*</span></label>
+                                        <div class="controls">
+                                            <input name="inputName" type="text" class="span12 m-wrap" value="<?php echo @$this->data['inputName']; ?>"  autocomplete="off">
+                                        </div>
+                                    </div>      
+                                </div>
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label">Apellidos<span class="required">*</span></label>
+                                        <div class="controls">
+                                            <input name="inputApps" type="text" class="span12 m-wrap" value="<?php echo @$this->data['inputApps']; ?>"  autocomplete="off">
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+
+
+                            <div class="span12 formcustom">
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label">Usuario<span class="required">*</span></label>
+                                        <div class="controls">
+                                            <input name="inputUser" type="text" class="span12 m-wrap" value="<?php echo @$this->data['inputUser']; ?>" autocomplete="off" >
+                                        </div>
+                                    </div>      
+                                </div>
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label">Contraseña<span class="required">*</span></label>
+                                        <div class="controls">
+                                            <input name="inputPass" type="text" class="span12 m-wrap" value="<?php echo @$this->data['inputPass']; ?>"  autocomplete="off">
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="span12 formcustom">
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label">Teléfono<span class="required">*</span></label>
+                                        <div class="controls">
+                                            <input name="inputTel" type="text" class="span12 m-wrap" value="<?php echo @$this->data['inputTel']; ?>"  autocomplete="off">
+                                        </div>
+                                    </div> 
+
+                                </div>
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label">Estado<span class="required">*</span></label>
+                                        <div class="controls">
+                                            <select class="m-wrap" name="inputEstado" id="inputEstado" >
+                                                <?php echo $this->aEstados;?>
+                                            </select>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="control-group">                            
+                                <div class="controls">
+                                
+                                </div>
+                            </div> 
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary  pull-right margin-left5">Continuar <i class="icon-arrow-right icon-white"></i></button>
+                                <a class="btn pull-right" href="/distribuitor/sales/cancel">
+                                    Cancelar
+                                </a>                                
+                            </div>                                      
+                    </fieldset>                         
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

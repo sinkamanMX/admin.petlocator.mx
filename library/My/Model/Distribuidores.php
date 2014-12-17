@@ -88,7 +88,8 @@ class My_Model_Distribuidores extends My_Db_Table
 				    contacto_tel2	= '".$data['inputTelContacto2']."', 
 				    horario			= '".$data['inputHorario']."', 
 				    dias			= '".$data['inputDias']."', 
-				    status			=  ".$data['inputEstatus'].", 
+				    status			=  ".$data['inputEstatus'].",
+				    precio_distribuidor=".$data['inputPrice'].",  
 				    latitud			=  ".$data['inputLatitud'].", 
 				    longitud 		=  ".$data['inputLongitud'];
         try{            
@@ -127,6 +128,7 @@ class My_Model_Distribuidores extends My_Db_Table
 				    horario			= '".$data['inputHorario']."', 
 				    dias			= '".$data['inputDias']."', 
 				    status			=  ".$data['inputEstatus'].", 
+				    precio_distribuidor=".$data['inputPrice'].",
 				    latitud			=  ".$data['inputLatitud'].", 
 				    longitud 		=  ".$data['inputLongitud']."
 			  WHERE $this->_primary = ".$data['catId']." LIMIT 1";

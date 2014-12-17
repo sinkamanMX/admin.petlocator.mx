@@ -1,0 +1,101 @@
+<?php $this->headScript()->appendFile('/js/modules/sales/validateProducts.js') ?>   
+<?php $arResume = Array();?>
+<div class="row-fluid">
+    <div class="navbar  m-top-3 no-margin-b">
+        <div class="navbar-inner">
+            <ul class="breadcrumb">
+                <i class="icon-chevron-left hide-sidebar"><a href="#" title="Hide Sidebar" rel="tooltip">&nbsp;</a></i>
+                <i class="icon-chevron-right show-sidebar" style="display:none;"><a href="#" title="Show Sidebar" rel="tooltip">&nbsp;</a></i>
+                <li>
+                    <a href="/distribuitor/sales/index">Modulo de Ventas</a> <span class="divider">/</span>  
+                </li>
+                <li>
+                    Productos
+                </li>
+            </ul>           
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Seleciconar los productos a vender.</div>
+            </div>
+            <div class="block-content collapse in">
+                <div id="divpError" class="alert alert-error" style="display:none;">
+                  <!--<button type="button" class="close" data-dismiss="alert">x</button>-->
+                  <h4>Error</h4>
+                  <div>Debe de seleccionar al menos un producto.</div>
+                </div>                     
+                <form method="POST" action="/distribuitor/sales/products" id="FormData" class="form-horizontal ">
+                    <input type="hidden" name="optReg" value="step2" />
+                    <input type="hidden" id="catId"     name="catId" value="<?php echo $this->catId; ?>" />
+                    <input type="hidden" id="priceDist" name="priceDist" value="<?php echo $this->aDataDist['precio_distribuidor'];?>" />
+                    <input type="hidden" id="totalPrice" name="totalPrice" value="0" />                            
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="dataTable">
+                        <thead>             
+                            <tr>
+                                <th width="50" ></th>
+                                <th width="100"></th>
+                                <th>Producto</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                                <th width="100" class="text-center">Cantidad</th>
+                                <th width="70"  class="text-center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $result = '';?>
+                            <?php foreach($this->aProducts as $key => $items): ?>
+                                <tr>                                                   
+                                    <td class="table-checkbox text-center">
+                                        <input name="products[]" type="checkbox" class="checkboxes" value="<?php echo $items['ID'];?>"/>
+                                    </td>
+                                    <td><img class="span12" src="http://test.petlocator.com.mx/images/productos/<?php echo $items['ft_archivo']; ?>" ></td>                                                 
+                                    <td><?php echo $items['NAME'];?></td>
+                                    <td><?php echo $items['prod_descripcion'];?></td>
+                                    <td><?php echo "$ ".number_format($this->aDataDist['precio_distribuidor'], 2);?></td>
+                                    <td>
+                                        <select name="selectCant<?php echo $items['ID'];?>" id="selectCant<?php echo $items['ID'];?>" onChange="reCalculate()" class="span12" disabled >
+                                            <?php echo $this->aCounter;?>
+                                        </select>
+                                    </td>  
+                                    <td><span id="span<?php echo $items['ID'];?>"> <?php echo "$ ".number_format(0, 2);?> </span></td>
+                                </tr>          
+                            <?php  endforeach;?>
+                           <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Total</th>                                
+                                <th class="text-left"><span id="spanTotal"> $ 0.00</th>
+                            </tr>                            
+                        </tbody>
+                    </table>
+
+                    <div class="control-group">                            
+                        <div class="controls">
+                        
+                        </div>
+                    </div> 
+
+                    <div class="form-actions">
+                        <button type="button" onClick="sendDataProducts()" class="btn btn-primary  pull-right margin-left5">Continuar <i class="icon-arrow-right icon-white"></i>
+
+                        </button>
+                        <a class="btn pull-right" href="/distribuitor/sales/cancel">
+                            Cancelar
+                        </a>                                
+                    </div>                                      
+                    </fieldset>                         
+                </form>                 
+
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+</div>   

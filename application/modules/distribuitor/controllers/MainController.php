@@ -37,7 +37,9 @@ class distribuitor_MainController extends My_Controller_Action
     		$cPaises  		 = new My_Model_Paises();   
     		$cClientes 		 = new My_Model_Clientes();
     		$classObject	 = new My_Model_Distribuidores();
-    		$cTrackers  	 = new My_Model_Trackers(); 		    		
+    		$cTrackers  	 = new My_Model_Trackers(); 
+    		$cPedidos 		 = new My_Model_Pedidos();
+    				    		
     		$sDistribuidor   = (isset($this->_dataIn['catId']) && $this->_dataIn['catId']!="") ? $this->_dataIn['catId']: $this->_dataUser['id_distribuidor'];
     		$codeCountry 	 = (isset($this->_dataIn['codeCountry']) && $this->_dataIn['codeCountry']!="") ? $this->_dataIn['codeCountry']: $this->_dataUser['cod_pais'];
     		
@@ -45,13 +47,14 @@ class distribuitor_MainController extends My_Controller_Action
     		$dataInfo 	= $classObject->getData($sDistribuidor);
 			$aClients	= $cClientes->getTableDist($sDistribuidor);    		    	
 			$aDataTable = $cTrackers->getDataTableAdmon($codeCountry,3,$sDistribuidor);
-			
+			$aPedidos	= $cPedidos->getOrdersByDist($sDistribuidor);
 			
 			$this->view->aTrackers   = $aDataTable;    		    		
     		$this->view->data 		 = $dataInfo;
 			$this->view->dataCountry = $cPaises->getData($codeCountry);    		
     		$this->view->dataIn		 = $this->_dataIn;
     		$this->view->aClients	 = $aClients;
+    		$this->view->aPedidos	 = $aPedidos;
 		} catch (Zend_Exception $e) {
             echo "Caught exception: " . get_class($e) . "\n";
         	echo "Message: " . $e->getMessage() . "\n";                

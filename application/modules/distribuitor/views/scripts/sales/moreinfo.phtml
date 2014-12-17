@@ -1,0 +1,21 @@
+<?php
+	$tipo_pagado=array(0=>"Sin pagar",1=>"Pagado");
+	$tipo_pago_metodo=array(0=>"Paypal",1=>"Dep√≥sito bancario",2=>"Transferencia electr√≥nica",3=>"Efectivo");
+	$tipo_estatus_pedido=array(0=>"Nuevo",1=>"Revisado",2=>"En Atenci√≥n",3=>"Con Problemas",4=>"En Camino",5=>"Entregado",6=>"Cancelado");
+?>
+<div class="row-fluid">   
+	<div class="span6">
+		<p class="">
+			<b>ID Pedido: </b><?php echo $this->Order['pdd_id']; ?><br>
+			<b>Fecha:    </b><?php echo $this->Order['pdd_fecha_alta']; ?><br>
+			<b>Estatus:  </b><?php echo $tipo_estatus_pedido[$this->Order['pdd_estatus']]; ?><br>
+			<b>Estatus Pago: </b> <?php echo $tipo_pagado[$this->Order['pdd_pagado']]; ?><br>
+		</p>      
+	</div>
+	<div class="span6">
+		<p class="">
+			<b>Detalle del Pedido</b><br>
+			<?php echo nl2br($this->Order['pdd_pedido']);   ?>
+		</p>
+	</div>
+</div>

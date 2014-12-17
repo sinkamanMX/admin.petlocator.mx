@@ -142,5 +142,27 @@ class My_Model_Trackers extends My_Db_Table
             echo $e->getErrorMessage();
         }
 		return $result;	
-    }    
+    }
+
+	public function getFreeTrackersCbo($codDist){
+		$result= Array();
+		$this->query("SET NAMES utf8",false);
+	
+    	$sql ="SELECT gpsTrackerID AS ID, gpsTrackerIMEI AS NAME
+				FROM GPSTracker
+				WHERE gpsTrackerID NOT IN 
+				(
+					SELECT masc_gpsTrackerID
+					FROM mascota
+					WHERE id_distribuidor = $codDist
+				)
+				 AND id_distribuidor = $codDist
+				 ORDER BY gpsTrackerIMEI ASC";
+		$query   = $this->query($sql);
+		if(count($query)>0){		  
+			$result = $query;			
+		}
+        
+		return $result;			
+	}    
 }	

@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"va",
+				"validateCount"
+			],
+			[
+				"to",
+				"totalProd"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
 				"data",
 				"dataInfo"
 			],
@@ -46,10 +58,6 @@
 			[
 				"cl",
 				"click  (function)"
-			],
-			[
-				"va",
-				"valueInput"
 			],
 			[
 				"da",
@@ -150,10 +158,6 @@
 			[
 				"fo",
 				"font-size"
-			],
-			[
-				"font",
-				"font-weight"
 			],
 			[
 				"min",
@@ -400,42 +404,50 @@
 	"buffers":
 	[
 		{
-			"file": "application/modules/admin/views/scripts/admongral/index.phtml",
+			"file": "application/modules/distribuitor/views/scripts/sales/index.phtml",
 			"settings":
 			{
-				"buffer_size": 6732,
+				"buffer_size": 6916,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "application/modules/admin/views/scripts/countrys/index.phtml",
+			"file": "public/js/modules/sales/validateFirst.js",
 			"settings":
 			{
-				"buffer_size": 11790,
+				"buffer_size": 1347,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "application/modules/admin/views/scripts/banners/getinfo.phtml",
+			"file": "application/modules/distribuitor/views/scripts/sales/products.phtml",
 			"settings":
 			{
-				"buffer_size": 6749,
+				"buffer_size": 5714,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/js/modules/banners/validateBanners.js",
+			"file": "application/modules/distribuitor/views/scripts/sales/pets.phtml",
 			"settings":
 			{
-				"buffer_size": 2511,
+				"buffer_size": 4448,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/js/modules/countrys/resume.js",
+			"file": "public/js/modules/sales/validatePets.js",
 			"settings":
 			{
-				"buffer_size": 955,
+				"buffer_size": 1855,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/js/modules/sales/validateProducts.js",
+			"settings":
+			{
+				"buffer_size": 2463,
 				"line_ending": "Unix"
 			}
 		},
@@ -443,7 +455,15 @@
 			"file": "public/assets/styles.css",
 			"settings":
 			{
-				"buffer_size": 7948,
+				"buffer_size": 8569,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/modules/distribuitor/views/scripts/sales/finish.phtml",
+			"settings":
+			{
+				"buffer_size": 408,
 				"line_ending": "Unix"
 			}
 		}
@@ -476,17 +496,34 @@
 	},
 	"file_history":
 	[
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/dealers/validateDealers.js",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/assets/DT_bootstrap.css",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/distribuitor/views/scripts/main/index.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/distribuitor/views/scripts/clients/moreinfo.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/assets/styles.css",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/distribuitor/views/scripts/equipments/moreinfo.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/distribuitor/views/scripts/main/getinfo.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/dealers/index.js",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/reports/controllers/EquipmentsController.php",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/countrys/index.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/reports/views/scripts/equipments/moreinfo.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/banners/validateBanners.js",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/promos/validatePromos.js",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/promos/getinfo.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/dealers/getinfo.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/dealers/index.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/admongral/index.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/banners/getinfo.phtml",
+		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/countrys/resume.js",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/admongral/moreinfo.phtml",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/admongral/getdetail.phtml",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/gralTables.js",
-		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/admongral/index.phtml",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/admongral/validateCountrys.js",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/admongral/reportsGral.js",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/admin/views/scripts/clients/index.phtml",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/reports/reportsEquipments.js",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/main/validateEquipments.js",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/public/js/modules/functionGral.js",
-		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/reports/views/scripts/equipments/moreinfo.phtml",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/reports/views/scripts/equipments/index.phtml",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/reports/views/scripts/equipments/getinfo.phtml",
 		"/Users/itecno2/Documents/workspace/admin.petlocator.mx/application/modules/reports/index.phtml",
@@ -586,24 +623,7 @@
 		"/Users/itecno2/Documents/workspace/productividad.mx/application/views/layouts/footer.phtml",
 		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/main/views/scripts/profiles/index.phtml",
 		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/main/validateProfile.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/main/views/scripts/users/index.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/main/validateEquipments.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/main/views/scripts/equipment/index.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/main/infoEquipments.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/modules/functionGral.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/main/views/scripts/phones/searchactivos.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/main/searchActivos.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/main/infoPhones.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/main/controllers/EquipmentController.php",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/callcenter/lastStepCall.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/callcenter/views/scripts/callservice/finish.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/callcenter/views/scripts/callservice/instalation.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/callcenter/instalation.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/public/js/atn/rastreotels.js",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/atn/views/scripts/rastreo/index.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/atn/views/scripts/services/index.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/callcenter/views/scripts/rastreo/index.phtml",
-		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/atn/views/scripts/rastreo/reporte.phtml"
+		"/Users/itecno2/Documents/workspace/productividad.mx/application/modules/main/views/scripts/users/index.phtml"
 	],
 	"find":
 	{
@@ -624,6 +644,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"margin-left",
+			"catID",
+			"no",
 			"currentChart",
 			"cf.data",
 			"Cancelar",
@@ -748,10 +771,7 @@
 			"echo",
 			"Zend_Debug",
 			"row",
-			"margin-le",
-			"margin-top",
-			"text",
-			"bottom"
+			"margin-le"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -812,104 +832,52 @@
 	"groups":
 	[
 		{
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/modules/admin/views/scripts/admongral/index.phtml",
+					"file": "application/modules/distribuitor/views/scripts/sales/index.phtml",
 					"settings":
 					{
-						"buffer_size": 6732,
+						"buffer_size": 6916,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4248,
-								4187
+								5706,
+								5717
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1315.0,
+						"translation.y": 312.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/modules/admin/views/scripts/countrys/index.phtml",
+					"file": "public/js/modules/sales/validateFirst.js",
 					"settings":
 					{
-						"buffer_size": 11790,
+						"buffer_size": 1347,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3118,
-								3224
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 264.0,
-						"translation.y": 303.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/modules/admin/views/scripts/banners/getinfo.phtml",
-					"settings":
-					{
-						"buffer_size": 6749,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2093,
-								2093
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/js/modules/banners/validateBanners.js",
-					"settings":
-					{
-						"buffer_size": 2511,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2139,
-								2139
+								1347,
+								0
 							]
 						],
 						"settings":
@@ -919,52 +887,139 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 355.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "public/js/modules/countrys/resume.js",
-					"settings":
-					{
-						"buffer_size": 955,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								313,
-								313
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "public/assets/styles.css",
+					"buffer": 2,
+					"file": "application/modules/distribuitor/views/scripts/sales/products.phtml",
 					"settings":
 					{
-						"buffer_size": 7948,
+						"buffer_size": 5714,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5724,
-								5713
+								0,
+								5714
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 1.0,
+						"translation.y": 820.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/modules/distribuitor/views/scripts/sales/pets.phtml",
+					"settings":
+					{
+						"buffer_size": 4448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2086,
+								2091
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 93.0,
+						"translation.y": 610.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/js/modules/sales/validatePets.js",
+					"settings":
+					{
+						"buffer_size": 1855,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1825,
+								1825
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 295.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/js/modules/sales/validateProducts.js",
+					"settings":
+					{
+						"buffer_size": 2463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2463,
+								2062
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 595.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/assets/styles.css",
+					"settings":
+					{
+						"buffer_size": 8569,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7905,
+								7893
 							]
 						],
 						"settings":
@@ -974,7 +1029,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5134.0,
+						"translation.y": 6292.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "application/modules/distribuitor/views/scripts/sales/finish.phtml",
+					"settings":
+					{
+						"buffer_size": 408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								408,
+								408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

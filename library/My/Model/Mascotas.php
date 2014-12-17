@@ -243,5 +243,33 @@ class My_Model_Mascotas extends My_Db_Table
 		}	
         
 		return $result;	   
-    }       
+    }    
+
+    public function insertRow($data){
+        $result     = Array();
+        $result['status']  = false;
+        
+        $masc_random= $this->RandomString();        
+        $sql="INSERT $this->_name			 
+				SET clt_id			 = '".$data['inputCliente']."',
+					id_distribuidor	 = '".$data['inputDistribuidor']."',
+					masc_gpsTrackerID= '".$data['inputTracker']."',
+					masc_nombre		 = '".$data['inputNombre']."',
+					masc_idAleatorio = '".$masc_random."',
+					masc_estatus	 = 0,
+	                masc_fecha_alta  = CURRENT_TIMESTAMP";      
+        try{            
+    		$query   = $this->query($sql,false);
+    		$sql_id ="SELECT LAST_INSERT_ID() AS ID_LAST;";
+			$query_id   = $this->query($sql_id);
+			if(count($query_id)>0){
+				$result['id']	   = $query_id[0]['ID_LAST'];
+				$result['status']  = true;					
+			}	
+        }catch(Exception $e) {
+            echo $e->getMessage();
+            echo $e->getErrorMessage();
+        }
+		return $result;	
+    }  
 }

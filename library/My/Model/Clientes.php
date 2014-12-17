@@ -74,4 +74,45 @@ class My_Model_Clientes extends My_Db_Table
         
 		return $result;	        
     }  	
+    
+	public function userExist($suerName){
+		$result= Array();
+    	$sql ="SELECT COUNT(*) AS EXISTE
+                FROM usuario_cliente 
+                WHERE clt_email = '".$suerName."' LIMIT 1";			         	
+		$query   = $this->query($sql);
+		if(count($query)>0){
+			$result	 = $query[0]['EXISTE'];			
+		}	
+        
+		return $result;			
+	}    
+	
+    public function insertRow($data){
+        $result     = Array();
+        $result['status']  = false;
+        
+		$sql="INSERT INTO usuario_cliente 
+			   SET id_distribuidor 	=  ".$data['inputDistribuidor']." , 
+			   	   clt_pais			= '".$data['inputPais']."',
+			   	   clt_nombre 	 	= '".$data['inputName']."',
+				   clt_apellidos	= '".$data['inputApps']."',
+				   clt_telefono		= '".$data['inputTel']."' ,
+				   clt_estado 		=  ".$data['inputEstado']." ,			   
+				   clt_email 		= '".$data['inputUser']."',
+				   clt_clave 		= '".$data['inputPass']."'";
+        try{            
+    		$query   = $this->query($sql,false);
+    		$sql_id ="SELECT LAST_INSERT_ID() AS ID_LAST;";
+			$query_id   = $this->query($sql_id);
+			if(count($query_id)>0){
+				$result['id']	   = $query_id[0]['ID_LAST'];
+				$result['status']  = true;					
+			}	
+        }catch(Exception $e) {
+            echo $e->getMessage();
+            echo $e->getErrorMessage();
+        }
+		return $result;	
+    }	
 }

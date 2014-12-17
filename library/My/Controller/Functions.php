@@ -125,8 +125,10 @@ class My_Controller_Functions
 	}
 
 	public function cbo_number($n,$option=''){
+		$select='';		
 	  for($i=0; $i<$n; $i++){
-		  $h = ($i<=9)?"0".$i:$i;
+		  //$h = ($i<=9)?"0".$i:$i;
+		  $h = $i;
 		  $current = ($h==$option) ? 'selected': '';
 		  $select .= '<option '.$current.' value="'.$h.'" >'.$h.'</option>';
 		  }
@@ -135,6 +137,7 @@ class My_Controller_Functions
 	
 	public function selectDb($dataTable,$option=''){	
 		$result='';	
+		$select='';
 		if(count($dataTable)>0){
 			foreach($dataTable as $key => $items){
 				$select='';

@@ -28,4 +28,16 @@ $( document ).ready(function() {
 	          }          
 	      }
 	} );
+
+    $('#iFrameSearch').on('load', function () {        
+        $('#loader1').hide();
+        $('#iFrameSearch').show();
+    }); 
 });	
+
+function showDetail(idDate){
+	$('#loader1').show();
+	$('#iFrameSearch').hide(); 
+    $("#myModalinfoVis").modal("show");        
+    $('#iFrameSearch').attr('src','/distribuitor/sales/moreinfo?catId='+idDate);    
+}

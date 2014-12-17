@@ -10,6 +10,10 @@ $().ready(function() {
             inputCodePais   : "required",
             inputEstado     : "required",
             inputCp         : "required",
+            inputPrice      : {
+              required: true,
+              number  : true
+            },
             inputLatitud    : {
               required: true,
               number  : true
@@ -38,6 +42,10 @@ $().ready(function() {
             inputCodePais   : "Campo Requerido",
             inputEstado     : "Campo Requerido",
             inputCp         : "Campo Requerido",
+            inputPrice    : {
+              required: "Campo Requerido",
+              number:   "Este campo solo permite digitos."
+            },
             inputLatitud    : {
               required: "Campo Requerido",
               number:   "Este campo solo permite digitos."
